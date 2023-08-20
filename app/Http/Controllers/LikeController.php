@@ -19,18 +19,16 @@ class LikeController extends Controller
     {
 
         $like = Like::firstOrNew([
-            'user_id' => auth()->user()->id,
-            'likeable_type' => Post::class,
-            'likeable_id' => $post->id,
-            ]);
+                  'user_id' => auth()->user()->id,
+                  'likeable_type' => Post::class,
+                  'likeable_id' => $post->id,
+                ]);
         
         $success = false;
             
        if($like->id){
-
         $like->delete();
        }else{
-
         $success = $like->save();
        }
        return  $success ;
